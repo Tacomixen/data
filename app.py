@@ -34,25 +34,27 @@ sensors_ref = db.collection('sensor_data')
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-class MyThread(Thread):
-    def __init__(self, event):
-        Thread.__init__(self)
-        self.stopped = event
 
-    def run(self):
-        while not self.stopped.wait(5):
-            print("my thread")
-            # call a function
-            tick()
-
-
-def tick():
-    print('T E S T L O G G')
 
 
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
+
+    class MyThread(Thread):
+        def __init__(self, event):
+            Thread.__init__(self)
+            self.stopped = event
+
+        def run(self):
+            while not self.stopped.wait(5):
+                print("my thread")
+                # call a function
+                tick()
+
+
+    def tick():
+        print('T E S T L O G G')
 
     stopFlag = Event()
     thread = MyThread(stopFlag)
