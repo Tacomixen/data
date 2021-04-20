@@ -33,12 +33,12 @@ images:
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
-  _TRIGGER_ID: 9f08-b7cae53cad69-9f08-b7cae53cad69
+  _TRIGGER_ID: e3ee388d-3cbb-41a4-a986-ef734556c762
   _SERVICE_NAME: data
   _DEPLOY_REGION: us-central1
   _GCR_HOSTNAME: us.gcr.io
   _PLATFORM: managed
-  _LABELS: gcb-trigger-id=9f08-b7cae53cad69-9f08-b7cae53cad69
+  _LABELS: gcb-trigger-id=e3ee388d-3cbb-41a4-a986-ef734556c762
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed
