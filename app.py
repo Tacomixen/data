@@ -8,7 +8,14 @@ import firebase_admin
 from google.cloud import secretmanager
 from google.oauth2 import service_account
 
-from threading import Timer,Thread,Event
+import threading
+
+
+def printit():
+  threading.Timer(5.0, printit).start()
+  print ("T E S T L O G G")
+
+printit()
 
 GOOGLE_CLOUD_PROJECT_NUMBER = 544247596163
 FIREBASE_SA_SECRET_NAME = 'firebase-key'
@@ -40,24 +47,3 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
-
-    class MyThread(Thread):
-        def __init__(self, event):
-            Thread.__init__(self)
-            self.stopped = event
-
-        def run(self):
-            while not self.stopped.wait(5):
-                print("my thread")
-                # call a function
-                tick()
-
-
-    def tick():
-        print('T E S T L O G G')
-
-    stopFlag = Event()
-    thread = MyThread(stopFlag)
-    thread.start()
-    # this will stop the timer
-    #stopFlag.set()
